@@ -1,0 +1,37 @@
+.wallet-connect-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* Customize the ConnectButton */
+.wallet-connect-container button {
+  background-color: #7b3fe4;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wallet-connect-container button:hover {
+  background-color: #6a30c9;
+  transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .wallet-connect-container {
+    top: 15px;
+    right: 15px;
+  }
+  
+  .wallet-connect-container button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

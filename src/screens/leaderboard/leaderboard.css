@@ -1,0 +1,38 @@
+.leaderboard-container {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.leaderboard-content {
+  background-color: rgba(0, 0, 0, 0.7);
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.leaderboard-list {
+  margin-top: 20px;
+  text-align: left;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  align-items: center;
+}

@@ -1,0 +1,41 @@
+.top-buttons {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.leaderboard-button {
+  padding: 8px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px solid white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.leaderboard-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  transform: scale(1.05);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .top-buttons {
+    padding: 0 15px;
+  }
+  
+  .leaderboard-button {
+    padding: 6px 16px;
+    font-size: 14px;
+  }
+}
