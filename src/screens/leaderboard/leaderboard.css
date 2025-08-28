@@ -1,6 +1,6 @@
 .leaderboard-container {
   background-size: cover;
-  background-position: center;
+  background-position: 100% 0;
   background-repeat: no-repeat;
   position: fixed;
   top: 0;
