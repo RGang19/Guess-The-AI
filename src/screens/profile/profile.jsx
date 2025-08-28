@@ -1,30 +1,24 @@
 import React from 'react';
-import { useAccount } from 'wagmi';
-import './profile.css';
+import BackgroundImage from '../../assets/Background.png';
 
 const Profile = () => {
-  const { address, isConnected } = useAccount();
+  const containerStyle = {
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: '100% 0',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden'
+  };
 
-  if (!isConnected) {
-    return (
-      <div className="profile-container">
-        <h2>Please connect your wallet to view your profile</h2>
-      </div>
-    );
-  }
-
-  return (
-    <div className="profile-container">
-      <h2>Your Profile</h2>
-      <div className="profile-info">
-        <div className="wallet-address">
-          <span>Wallet Address:</span>
-          <p>{address}</p>
-        </div>
-        {/* Add more profile information here as needed */}
-      </div>
-    </div>
-  );
+  return <div style={containerStyle} />;
 };
 
 export default Profile;

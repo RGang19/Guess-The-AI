@@ -13,17 +13,47 @@
 }
 
 .leaderboard-content {
-  background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(30, 30, 30, 0.8); */
   max-width: 800px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 10px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 15px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
+  backdrop-filter: blur(5px);
   color: white;
-  text-align: center;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leaderboard-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1rem 0;
+  transform: scale(1.2); /* Additional scaling for the container */
+}
+
+.leaderboard-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px; /* Increased from 200px */
+  width: auto;
+  object-fit: contain;
+  transform: scale(1.5); /* Scale up the logo */
+  margin: 2rem 0; /* Add some vertical spacing */
 }
 
 .leaderboard-list {
-  margin-top: 20px;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
   text-align: left;
   max-height: 60vh;
   overflow-y: auto;
@@ -32,7 +62,56 @@
 .leaderboard-item {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #444;
   align-items: center;
+  padding: 15px 20px;
+  margin: 10px 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.leaderboard-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.leaderboard-item span {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Rank number styling */
+.leaderboard-item span:first-child {
+  font-weight: bold;
+  color: #9d6aff;
+  font-size: 1.6rem;
+}
+
+/* Score styling */
+.leaderboard-item span:last-child {
+  font-weight: bold;
+  color: #4caf50;
+  font-size: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .leaderboard-item {
+    font-size: 1.2rem;
+    padding: 12px 15px;
+  }
+  
+  .leaderboard-item span:first-child {
+    font-size: 1.4rem;
+  }
+  
+  .leaderboard-item:last-child {
+    font-size: 1.3rem;
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './leaderboard.css';
 import BackgroundImage from '../../assets/Background.png';
+import LeaderboardLogo from '../../assets/Leaderboard-logo.png';
 
 const Leaderboard = () => {
   // Sample leaderboard data - replace with your actual data
@@ -17,7 +18,13 @@ const Leaderboard = () => {
       style={{ backgroundImage: `url(${BackgroundImage})` }}
     >
       <div className="leaderboard-content">
-        <h1>Leaderboard</h1>
+        <div className="leaderboard-logo-container">
+          <img 
+            src={LeaderboardLogo} 
+            alt="Leaderboard" 
+            className="leaderboard-logo"
+          />
+        </div>
         <div className="leaderboard-list">
           {leaderboardData.map((player) => (
             <div key={player.rank} className="leaderboard-item">
