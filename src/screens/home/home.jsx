@@ -22,11 +22,17 @@ const Home = () => {
     }
   }, []);
   
+  const navigateToGame = () => {
+    if (name.trim() && isConnected) {
+      localStorage.setItem('userName', name.trim());
+      navigate('/game');
+    }
+  };
+
   // Save name to localStorage when it changes
   const handleNameChange = (e) => {
     const newName = e.target.value;
     setName(newName);
-    localStorage.setItem('userName', newName);
   };
 
   useEffect(() => {
@@ -58,12 +64,6 @@ const Home = () => {
       style={containerStyle}
     >
       <div className="top-buttons">
-        <button 
-          onClick={() => navigate('/leaderboard')}
-          className="leaderboard-button"
-        >
-          Leaderboard
-        </button>
         <WalletConnect />
       </div>
       
@@ -78,14 +78,45 @@ const Home = () => {
           </div>
           <div className="name-input-container">
             <div className="input-label">Enter user name here</div>
-            <input
-              type="text"
-              value={name}
-              onChange={handleNameChange}
-              className="name-input"
-              maxLength={50}
-            />
+            <div className="input-with-button">
+              <input
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && name.trim()) {
+                    navigateToGame();
+                  }
+                }}
+                className="name-input"
+                maxLength={50}
+                placeholder="Type your name"
+                autoFocus
+              />
+              <button 
+                className="enter-button" 
+                onClick={() => name.trim() && navigateToGame()}
+                disabled={!name.trim()}
+              >
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M5 12H19M19 12L12 5M19 12L12 19" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
+
         </>
       )}
     </div>

@@ -18,6 +18,40 @@
   transition: all 0.2s ease;
 }
 
+/* Hide all dropdown indicators */
+.wallet-connect-container button > div,
+.wallet-connect-container button > svg,
+.wallet-connect-container button::after,
+.wallet-connect-container button > div > svg,
+.wallet-connect-container button > div > div > svg {
+  display: none !important;
+}
+
+/* Show only the connect button text */
+.wallet-connect-container button {
+  position: relative;
+  padding-right: 16px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure the button text is visible */
+.wallet-connect-container button > span {
+  position: relative;
+  display: inline-block;
+  margin-right: 0 !important;
+}
+
+/* Hide the container that holds the dropdown arrow */
+.wallet-connect-container button > div[aria-hidden="true"] {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .wallet-connect-container button:hover {
   background-color: #6a30c9;
   transform: translateY(-1px);

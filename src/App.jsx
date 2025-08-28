@@ -3,10 +3,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { getDefaultConfig, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, base, zora } from 'wagmi/chains';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '@rainbow-me/rainbowkit/styles.css';
+
+// Components
+import Home from './screens/home/home';
+import Leaderboard from './screens/leaderboard/leaderboard';
+import Profile from './screens/profile/profile';
+import GamePage from './screens/game/GamePage';
+import BottomNav from './components/BottomNav';
 
 // 0G Galileo Testnet configuration
 const ogGalileoTestnet = {
-  id: 16601, // Replace with the actual chain ID for 0G Galileo Testnet
+  id: 16601,
   name: '0G Galileo Testnet',
   network: '0G-Galileo-Testnet',
   nativeCurrency: {
@@ -15,19 +24,15 @@ const ogGalileoTestnet = {
     symbol: 'OG',
   },
   rpcUrls: {
-    public: { http: ['https://evmrpc-testnet.0g.ai'] }, // Replace with actual RPC URL
-    default: { http: ['https://evmrpc-testnet.0g.ai'] }, // Replace with actual RPC URL
+    public: { http: ['https://evmrpc-testnet.0g.ai'] },
+    default: { http: ['https://evmrpc-testnet.0g.ai'] },
   },
   blockExplorers: {
-    etherscan: { name: '0G Explorer', url: 'https://chainscan-galileo.0g.ai' }, // Replace with actual explorer URL
-    default: { name: '0G Explorer', url: 'https://chainscan-galileo.0g.ai' }, // Replace with actual explorer URL
+    etherscan: { name: '0G Explorer', url: 'https://chainscan-galileo.0g.ai' },
+    default: { name: '0G Explorer', url: 'https://chainscan-galileo.0g.ai' },
   },
   testnet: true,
 };
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import '@rainbow-me/rainbowkit/styles.css';
-import Home from './screens/home/home';
-import Leaderboard from './screens/leaderboard/leaderboard';
 
 // Configure chains & providers
 const config = getDefaultConfig({
@@ -39,6 +44,18 @@ const config = getDefaultConfig({
 
 // Create a client
 const queryClient = new QueryClient();
+
+// Layout component to wrap all pages with BottomNav
+const Layout = ({ children }) => {
+  return (
+    <div className="app-layout">
+      <main className="main-content">
+        {children}
+      </main>
+      <BottomNav />
+    </div>
+  );
+};
 
 function App() {
   return (
@@ -53,8 +70,26 @@ function App() {
         >
           <Router>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/" element={
+                <Layout>
+                  <Home />
+                </Layout>
+              } />
+              <Route path="/leaderboard" element={
+                <Layout>
+                  <Leaderboard />
+                </Layout>
+              } />
+              <Route path="/profile" element={
+                <Layout>
+                  <Profile />
+                </Layout>
+              } />
+              <Route path="/game" element={
+                <Layout>
+                  <GamePage />
+                </Layout>
+              } />
             </Routes>
           </Router>
         </RainbowKitProvider>

@@ -1,0 +1,31 @@
+.game-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+}
+
+.game-content {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(42, 35, 86, 0.7);
+  border-radius: 15px;
+  border: 1px solid #444;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 1rem;
+  }
+  
+  .game-content {
+    padding: 1rem;
+    min-height: 200px;
+  }
+}
