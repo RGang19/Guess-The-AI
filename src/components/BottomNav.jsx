@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAccount, useDisconnect } from 'wagmi';
 import HomeIcon from '../assets/Home-icon.png';
+import GameIcon from '../assets/Game.png';
 import LeaderboardIcon from '../assets/Leaderboard.png';
 import ProfileIcon from '../assets/Profile.png';
 import WalletIcon from '../assets/Wallet.png';
@@ -38,23 +39,23 @@ const BottomNav = () => {
 
   const handleNavClick = (index) => {
     switch(index) {
-      case 0: // First icon (Home)
-        navigate('/game');
-        setShowWalletInfo(false);
-        break;
-      case 0:
+      case 0: // Home
         setShowWalletInfo(false);
         navigate('/');
         break;
-      case 1:
+      case 1: // Game
+        setShowWalletInfo(false);
+        navigate('/game');
+        break;
+      case 2: // Leaderboard
         setShowWalletInfo(false);
         navigate('/leaderboard');
         break;
-      case 2:
+      case 3: // Profile
         setShowWalletInfo(false);
         navigate('/profile');
         break;
-      case 3:
+      case 4: // Wallet
         setShowWalletInfo(!showWalletInfo);
         break;
       default:
@@ -76,15 +77,18 @@ const BottomNav = () => {
         <img src={HomeIcon} alt="Home" className="icon" />
       </button>
       <button className="nav-icon" onClick={() => handleNavClick(1)}>
-        <img src={LeaderboardIcon} alt="Leaderboard" className="icon" />
+        <img src={GameIcon} alt="Game" className="icon" />
       </button>
       <button className="nav-icon" onClick={() => handleNavClick(2)}>
+        <img src={LeaderboardIcon} alt="Leaderboard" className="icon" />
+      </button>
+      <button className="nav-icon" onClick={() => handleNavClick(3)}>
         <img src={ProfileIcon} alt="Profile" className="icon" />
       </button>
       <div className="wallet-icon-container" ref={popupRef}>
         <button 
           className={`nav-icon ${showWalletInfo ? 'active' : ''}`} 
-          onClick={() => handleNavClick(3)}
+          onClick={() => handleNavClick(4)}
         >
           <img src={WalletIcon} alt="Wallet" className="icon" />
         </button>
