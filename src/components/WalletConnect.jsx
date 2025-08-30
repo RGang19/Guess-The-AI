@@ -4,9 +4,18 @@ import { useAccount, useSwitchChain, useConfig } from 'wagmi';
 import './WalletConnect.css';
 
 const WalletConnect = () => {
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { switchChain } = useSwitchChain();
   const config = useConfig();
+
+  // Store wallet address in local storage when connected
+  useEffect(() => {
+    if (isConnected && address) {
+      localStorage.setItem('walletAddress', address);
+    } else {
+      localStorage.removeItem('walletAddress');
+    }
+  }, [isConnected, address]);
 
   useEffect(() => {
     const switchToOgGalileo = async () => {
